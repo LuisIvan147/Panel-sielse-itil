@@ -1,0 +1,239 @@
+# Sistema de Autenticación WebITIL
+
+## Plan de Desarrollo - Versión 1.0
+
+---
+
+# Objetivo del Proyecto
+
+Desarrollar un sistema de autenticación profesional utilizando Next.js, TypeScript y Tailwind CSS, siguiendo buenas prácticas de arquitectura, seguridad y escalabilidad.
+
+El objetivo no es únicamente construir un Login funcional, sino comprender completamente cómo funciona un sistema de autenticación utilizado en aplicaciones empresariales.
+
+Todo el desarrollo estará orientado a un entorno de producción.
+
+---
+
+# Filosofía del Proyecto
+
+Durante este proyecto no se copiará código sin comprenderlo.
+
+Cada decisión de diseño, cada carpeta, cada componente y cada línea de código deberá tener un propósito claro.
+
+La prioridad será entender el funcionamiento interno del sistema antes de utilizar librerías que automaticen el proceso.
+
+---
+
+# Objetivos de Aprendizaje
+
+Al finalizar este proyecto seré capaz de:
+
+* Comprender el funcionamiento completo de un sistema de autenticación.
+* Construir un Login profesional desde cero.
+* Diseñar formularios reutilizables.
+* Implementar validaciones correctamente.
+* Comprender el flujo completo entre Frontend y Backend.
+* Aplicar buenas prácticas de arquitectura.
+* Preparar el proyecto para un entorno de producción.
+* Integrar posteriormente una API sin modificar la arquitectura del Frontend.
+
+---
+
+# Metodología de Desarrollo
+
+Cada módulo del proyecto seguirá el siguiente proceso:
+
+1. Comprender la teoría.
+2. Diseñar la arquitectura.
+3. Implementar el código.
+4. Refactorizar.
+5. Documentar.
+
+Nunca se escribirá código sin comprender previamente qué problema resuelve.
+
+---
+
+# Estado Actual del Proyecto
+
+Actualmente el Backend aún no está disponible.
+
+Por este motivo el desarrollo comenzará únicamente con el Frontend.
+
+La arquitectura estará preparada para consumir una API real cuando esta exista.
+
+Mientras tanto se utilizarán datos simulados para desarrollar y probar la interfaz.
+
+---
+
+# Arquitectura Inicial
+
+src/
+├── app/
+│   ├── login/
+│   └── dashboard/
+│
+├── components/
+│   └── auth/
+│       ├── LoginForm.tsx
+│       ├── Input.tsx
+│       └── Button.tsx
+│
+├── services/
+│   └── auth.service.ts
+│
+├── types/
+│   └── auth.ts
+│
+├── validations/
+│   └── login.schema.ts
+│
+├── lib/
+│
+└── middleware.ts
+
+Esta estructura podrá evolucionar durante el desarrollo según las necesidades del proyecto.
+
+---
+
+# Flujo General del Sistema
+
+Usuario ➔ Formulario de Login ➔ Validación del Frontend ➔ AuthService ➔ Datos simulados (Temporal) ➔ API REST (Futuro) ➔ Respuesta ➔ Dashboard
+
+El formulario nunca conocerá directamente cómo funciona el Backend.
+
+Toda la comunicación se realizará mediante un servicio de autenticación.
+
+---
+
+# Diseño Inicial del Login
+
+Campos:
+
+* Correo electrónico (o Usuario corporativo según los requerimientos finales).
+* Contraseña.
+
+Características:
+
+* Mostrar/Ocultar contraseña.
+* Botón "Iniciar sesión".
+* Recordarme.
+* ¿Olvidaste tu contraseña?
+* Indicador de carga.
+* Botón deshabilitado durante la autenticación.
+
+---
+
+# Validaciones del Frontend
+
+Correo electrónico:
+
+* Obligatorio.
+* Formato válido.
+
+Contraseña:
+
+* Obligatoria.
+* Longitud mínima definida por los requerimientos del proyecto.
+
+Las validaciones del Frontend únicamente verifican el formato de los datos.
+
+La autenticación siempre será responsabilidad del Backend.
+
+---
+
+# Manejo de Errores
+
+## Errores de Validación
+
+Se mostrarán debajo del campo correspondiente.
+
+Ejemplos:
+
+* El correo es obligatorio.
+* Ingrese un correo válido.
+* La contraseña es obligatoria.
+
+---
+
+## Errores de Autenticación
+
+Se mostrarán en la parte superior del formulario.
+
+Ejemplo:
+
+Usuario o contraseña incorrectos.
+
+---
+
+## Errores del Sistema
+
+Se mostrarán mediante una notificación (Toast).
+
+Ejemplos:
+
+* No fue posible conectarse con el servidor.
+* Revise su conexión a Internet.
+
+---
+
+# Experiencia de Usuario (UX)
+
+Durante el envío del formulario:
+
+* El botón permanecerá deshabilitado.
+* Se mostrará un indicador de carga.
+* Se evitarán múltiples solicitudes.
+
+En caso de pérdida de conexión:
+
+* El usuario permanecerá en la pantalla.
+* Se mostrará un mensaje indicando el problema.
+
+---
+
+# Principios del Proyecto
+
+* Código limpio.
+* Componentes reutilizables.
+* Arquitectura escalable.
+* Separación de responsabilidades.
+* Seguridad desde el inicio.
+* Buenas prácticas de desarrollo.
+* Pensar primero, programar después.
+
+---
+
+# Tecnologías Planeadas
+
+Frontend
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+
+Validaciones
+
+* React Hook Form
+* Zod
+
+Seguridad (Etapa posterior)
+
+* Cookies HttpOnly
+* bcrypt
+* Middleware
+* Cloudflare Turnstile
+
+Backend (Etapa futura)
+
+* API REST
+* Base de datos
+* Sistema de autenticación
+* Gestión de sesiones
+
+---
+
+# Objetivo Final
+
+Construir un sistema de autenticación profesional, escalable y preparado para producción, comprendiendo completamente cada decisión de arquitectura y cada línea de código implementada.
+Este documento será actualizado durante todo el desarrollo del proyecto y servirá como referencia técnica para futuras funcionalidades.
