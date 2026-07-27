@@ -30,6 +30,8 @@ export default function LoginForm() {
         }
 
         if (username === 'Mateo' && password === '1234') {
+            localStorage.setItem("user", username);
+            localStorage.setItem("isAuthenticated", "true");
             Router.push("/dashboard");
         } else {
             setLoginError("Usuario o contraseña incorrectos")
