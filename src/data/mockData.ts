@@ -1,0 +1,76 @@
+// src/data/mockData.ts
+// ─────────────────────────────────────────────────────────────────────────────
+// Datos simulados del sistema ITIL mientras no exista un backend real.
+// Cuando se integre la API, este archivo se elimina y se reemplaza
+// por llamadas al servicio correspondiente.
+// ─────────────────────────────────────────────────────────────────────────────
+
+import { RecordItem, RecordRating } from "@/types/dashboard";
+
+export const MOCK_RECORDS: RecordItem[] = [
+    {
+        id: "00010202601",
+        status: "En Atención",
+        createdAt: "29/07/2026 14:35",
+        usuario: "jperez",
+        nombreUsuario: "Juan Pérez",
+        empresa: "1",
+        nombreEmpresa: "ELECTRO SUR ESTE S.A.A",
+        sucursal: "1",
+        nombreSucursal: "Cusco",
+        area: "125",
+        nombreArea: "Atención Clientela",
+        anexo: "210",
+        ip: "10.1.1.105",
+        servicio: "SIELSE Comercial",
+        modulo: "ATENCION CLIENTELA - Administrador de Clientes",
+        descripcion: "El pool de conexiones está saturado. Se registran timeouts cada 5 minutos al intentar acceder al módulo de facturación.",
+    },
+    {
+        id: "00010202602",
+        status: "Resuelto",
+        createdAt: "28/07/2026 09:15",
+        usuario: "sgomez",
+        nombreUsuario: "Sofía Gómez",
+        empresa: "2",
+        nombreEmpresa: "ELECTRO PUNO S.A.A.",
+        sucursal: "2",
+        nombreSucursal: "Arequipa",
+        area: "310",
+        nombreArea: "Recursos Humanos",
+        anexo: "",
+        ip: "10.1.2.44",
+        servicio: "SIELSE ADMINISTRATIVO",
+        modulo: "Gestión de Personal",
+        descripcion: "Nuevo ingreso para el área de marketing necesita cuenta corporativa y suite office activada.",
+    },
+    {
+        id: "00010202603",
+        status: "Registrado",
+        createdAt: "29/07/2026 21:10",
+        usuario: "soporte1",
+        nombreUsuario: "Soporte Nivel 1",
+        empresa: "1",
+        nombreEmpresa: "ELECTRO SUR ESTE S.A.A",
+        sucursal: "1",
+        nombreSucursal: "Cusco",
+        area: "001",
+        nombreArea: "GOS",
+        anexo: "100",
+        ip: "10.1.0.10",
+        servicio: "Infraestructura",
+        modulo: "Servidor MAP",
+        descripcion: "Se detectan picos inusuales de uso de CPU en el servidor principal de correo de la oficina central.",
+    },
+];
+
+export const MOCK_RATINGS: RecordRating[] = [
+    {
+        id: "00010202604",
+        recordId: "TKT-1928",
+        rating: 5,
+        comments: "Excelente atención, la licencia fue aprovisionada en menos de 2 horas. ¡Gracias!",
+        recommended: "si",
+        createdAt: "28/07/2026 16:30",
+    },
+];
