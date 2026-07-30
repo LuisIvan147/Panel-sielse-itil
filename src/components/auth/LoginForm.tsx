@@ -14,8 +14,7 @@ export default function LoginForm() {
 
     const Router = useRouter();
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => { event.preventDefault();
         setUsernameError("");
         setPasswordError("");
         setLoginError("");
@@ -39,19 +38,20 @@ export default function LoginForm() {
     };
 
     return (
+    <div className="login-container">
         <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full max-w-sm p-4 border rounded-lg shadow-md">
 
             <h1 className="text-2xl font-bold text-center gap">Iniciar sesión</h1>
             <label htmlFor="username">Ingrese su nombre de usuario</label>
-            <input type="text" id="username" value={username}
-
+            <input 
+                type="text" id="username" value={username}
                 onChange={(event) => { setUsername(event.target.value); setUsernameError(""); console.log("", event.target.value) }}
 
                 required autoComplete="username" className="border border-gray-500 rounded-md py-2 px-3 " />
             {usernameError && (<p className="mt-[-10px] text-sm text-red-600">{usernameError}</p>)}
             <label htmlFor="password">Ingrese su contraseña</label>
-            <input type="password" id="password" value={password}
-
+            <input 
+                type="password" id="password" value={password}
                 onChange={(event) => { setPassword(event.target.value); setPasswordError(""); console.log("", event.target.value) }}
 
                 required autoComplete="current-password" className="border border-gray-500 rounded-md py-2 px-3 " />
@@ -60,6 +60,6 @@ export default function LoginForm() {
             <p className="mt-[-10px] text-center text-sm text-red-600">{LoginError}</p>
             {/*<p>{username}</p>*/}
         </form>
-
+    </div>
     )
 }

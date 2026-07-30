@@ -5,8 +5,6 @@ import { RiHome9Fill, RiAddCircleFill } from "react-icons/ri";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { MdEditDocument } from "react-icons/md";
 import { FiLogOut, FiX } from "react-icons/fi";
-
-// --- Tipos ---
 export type ViewId = "inicio" | "agregar" | "buscar" | "calificacion";
 
 export const navigationItems = [
@@ -113,7 +111,6 @@ export default function Sidebar({ view, currentUser, isMobileOpen, onNavigate, o
                         onClick={(e) => e.stopPropagation()}
                     >
                         <div>
-                            {/* Cabecera del drawer */}
                             <div className="p-4 border-b border-gray-100 flex items-center justify-between">
                                 <div className="flex items-center gap-2">
                                     <img src="./logo/logo.gif" alt="logo" className="w-25" />
@@ -125,10 +122,8 @@ export default function Sidebar({ view, currentUser, isMobileOpen, onNavigate, o
                                     <FiX className="w-5 h-5" />
                                 </button>
                             </div>
-
                             <NavList view={view} onNavigate={onNavigate} onAfterNavigate={onCloseMobile} />
                         </div>
-
                         <UserFooter currentUser={currentUser} onLogout={onLogout} />
                     </aside>
                 </div>

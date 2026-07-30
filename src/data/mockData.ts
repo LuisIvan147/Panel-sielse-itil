@@ -1,16 +1,9 @@
-// src/data/mockData.ts
-// ─────────────────────────────────────────────────────────────────────────────
-// Datos simulados del sistema ITIL mientras no exista un backend real.
-// Cuando se integre la API, este archivo se elimina y se reemplaza
-// por llamadas al servicio correspondiente.
-// ─────────────────────────────────────────────────────────────────────────────
-
 import { RecordItem, RecordRating } from "@/types/dashboard";
 
 export const MOCK_RECORDS: RecordItem[] = [
     {
         id: "00010202601",
-        status: "En Atención",
+        status: "Revisión",
         createdAt: "29/07/2026 14:35",
         usuario: "jperez",
         nombreUsuario: "Juan Pérez",
@@ -28,16 +21,16 @@ export const MOCK_RECORDS: RecordItem[] = [
     },
     {
         id: "00010202602",
-        status: "Resuelto",
+        status: "Calificado",
         createdAt: "28/07/2026 09:15",
         usuario: "sgomez",
         nombreUsuario: "Sofía Gómez",
         empresa: "2",
         nombreEmpresa: "ELECTRO PUNO S.A.A.",
         sucursal: "2",
-        nombreSucursal: "Arequipa",
+        nombreSucursal: "Puno",
         area: "310",
-        nombreArea: "Recursos Humanos",
+        nombreArea: "Admin",
         anexo: "",
         ip: "10.1.2.44",
         servicio: "SIELSE ADMINISTRATIVO",
@@ -58,10 +51,11 @@ export const MOCK_RECORDS: RecordItem[] = [
         nombreArea: "GOS",
         anexo: "100",
         ip: "10.1.0.10",
-        servicio: "Infraestructura",
+        servicio: "Gos",
         modulo: "Servidor MAP",
         descripcion: "Se detectan picos inusuales de uso de CPU en el servidor principal de correo de la oficina central.",
     },
+
 ];
 
 export const MOCK_RATINGS: RecordRating[] = [

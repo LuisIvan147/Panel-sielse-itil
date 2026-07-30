@@ -22,12 +22,7 @@ export default function DashboardSidebar({ onLogout }: DashboardSidebarProps) {
             </div>
 
             <div className="p-4 border-t border-gray-200">
-                <button
-                    onClick={onLogout}
-                    className="w-full text-left px-3 py-2 text-sm font-medium text-red-600 hover:bg-gray-100 rounded-md"
-                >
-                    Salir
-                </button>
+     
             </div>
         </aside>
     );

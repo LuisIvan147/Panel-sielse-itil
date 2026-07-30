@@ -6,7 +6,7 @@
 export interface RecordItem {
     // ── Identificación ──────────────────────────────────────────────────────
     id:        string;   // Nro. Incidente (generado automáticamente, ej. TKT-3841)
-    status:   'Registrado' | 'En Atención' | 'Resuelto' | 'Cerrado';
+    status:   'Registrado' | 'Revisión' | 'Calificado' | 'Cerrado';
     createdAt: string;   // Fecha y hora de registro
 
     // ── Datos del Solicitante ────────────────────────────────────────────────

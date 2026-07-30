@@ -2,11 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-
-// Tipos
 import { RecordItem, RecordRating } from "@/types/dashboard";
-
-// Datos de prueba (simulados mientras no hay backend)
 import { MOCK_RECORDS, MOCK_RATINGS } from "@/data/mockData";
 
 // Componentes de Layout
@@ -24,18 +20,11 @@ import SearchRecords from "@/components/dashboard/SearchRecords";
 export default function DashboardPage() {
     const router = useRouter();
 
-    // Estado de navegación
     const [view, setView] = useState<ViewId>("inicio");
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-    // Estado del usuario autenticado
     const [currentUser, setCurrentUser] = useState("Luchis");
-
-    // Estado global de datos
     const [records, setRecords] = useState<RecordItem[]>(MOCK_RECORDS);
-    const [ratings, setRatings] = useState<RecordRating[]>(MOCK_RATINGS);
-
-    // Leer usuario desde localStorage al cargar
+    const [ratings] = useState<RecordRating[]>(MOCK_RATINGS);
     useEffect(() => {
         const stored = localStorage.getItem("user");
         if (!stored) return;
@@ -57,22 +46,18 @@ export default function DashboardPage() {
     };
 
     const handleAddRecord = (r: RecordItem) => setRecords((prev) => [r, ...prev]);
-    const handleAddRating = (r: RecordRating) => setRatings((prev) => [r, ...prev]);
     const handleUpdateStatus = (id: string, status: RecordItem["status"]) =>
         setRecords((prev) => prev.map((r) => (r.id === id ? { ...r, status } : r)));
 
-    // ── Estadísticas para la vista de Inicio ─────────────────────────────────
 
     const stats = {
         totalTickets: records.length,
         openTickets: records.filter((r) => r.status === "Registrado").length,
-        progressTickets: records.filter((r) => r.status === "En Atención").length,
+        progressTickets: records.filter((r) => r.status === "Revisión").length,
         averageRating: ratings.length > 0
             ? (ratings.reduce((acc, r) => acc + r.rating, 0) / ratings.length).toFixed(1)
             : "N/A",
     };
-
-    // ── Render ────────────────────────────────────────────────────────────────
 
     return (
         <div className="flex min-h-screen bg-gray-50 text-gray-700 font-sans">
@@ -119,12 +104,7 @@ export default function DashboardPage() {
                     )}
 
                     {view === "calificacion" && (
-                        <RatingForm
-                            records={records}
-                            ratings={ratings}
-                            onAddRating={handleAddRating}
-                            onNavigateToSearch={() => setView("buscar")}
-                        />
+                        <RatingForm />
                     )}
 
                 </main>
