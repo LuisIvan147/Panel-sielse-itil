@@ -59,6 +59,7 @@ export default function LoginForm() {
             <button type="submit" className="border mt-3 border-black bg-black text-white py-2 px-3 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-green-100">Entrar </button>
             <p className="mt-[-10px] text-center text-sm text-red-600">{LoginError}</p>
             {/*<p>{username}</p>*/}
+            <p>{password}</p>
         </form>
     </div>
     )

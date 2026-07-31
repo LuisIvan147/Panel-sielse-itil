@@ -1,11 +1,12 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// Tipos del sistema ITIL — Sielse
-// Basados en el formulario "Registro de Incidentes" del sistema SIELSE Comercial
-// ─────────────────────────────────────────────────────────────────────────────
+export interface ArchivoAdjunto {
+    nombre: string;   // Nombre del archivo
+    tamano: number;   // Tamaño en bytes
+    tipo: string;     // MIME type (ej. application/pdf)
+}
 
 export interface RecordItem {
     // ── Identificación ──────────────────────────────────────────────────────
-    id:        string;   // Nro. Incidente (generado automáticamente, ej. TKT-3841)
+    id:        string;
     status:   'Registrado' | 'Revisión' | 'Calificado' | 'Cerrado';
     createdAt: string;   // Fecha y hora de registro
 
@@ -25,12 +26,14 @@ export interface RecordItem {
     servicio:       string;  // Servicio ITIL (ej. SIELSE Comercial)
     modulo:         string;  // Módulo del sistema (ej. ATENCION CLIENTELA)
     descripcion:    string;  // Descripción detallada del incidente / solicitud
+    fecha:          string;  // Fecha del incidente (formato DD/MM/AAAA)
+    archivos:       ArchivoAdjunto[];  // Archivos adjuntos al ticket
 }
 
 export interface RecordRating {
     id:          string;
     recordId:    string;
-    rating:      number;   // 1 a 5 estrellas
+    rating:      number; 
     comments:    string;
     recommended: 'si' | 'no';
     createdAt:   string;

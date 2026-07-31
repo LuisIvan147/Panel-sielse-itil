@@ -68,7 +68,7 @@ function UserFooter({ currentUser, onLogout }: UserFooterProps) {
                 </div>
                 <div>
                     <span className="text-xs font-bold text-gray-800 block">{currentUser}</span>
-                    <span className="text-[10px] text-gray-400 font-medium block">Soporte TI</span>
+                    <span className="text-[10px] text-gray-400 font-medium block">Admin de admins</span>
                 </div>
             </div>
             <button
@@ -107,7 +107,7 @@ export default function Sidebar({ view, currentUser, isMobileOpen, onNavigate, o
                     onClick={onCloseMobile}
                 >
                     <aside
-                        className="w-60 bg-white h-full flex flex-col justify-between border-r border-gray-200"
+                        className="w-50 bg-white h-full flex flex-col justify-between border-r border-gray-200"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <div>

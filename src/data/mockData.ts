@@ -17,7 +17,9 @@ export const MOCK_RECORDS: RecordItem[] = [
         ip: "10.1.1.105",
         servicio: "SIELSE Comercial",
         modulo: "ATENCION CLIENTELA - Administrador de Clientes",
-        descripcion: "El pool de conexiones está saturado. Se registran timeouts cada 5 minutos al intentar acceder al módulo de facturación.",
+        descripcion: "conexiones está saturado. Se registran timeouts cada 5 minutos al intentar acceder al módulo de facturación.",
+        fecha: "29/07/2026",
+        archivos: [],
     },
     {
         id: "00010202602",
@@ -35,7 +37,9 @@ export const MOCK_RECORDS: RecordItem[] = [
         ip: "10.1.2.44",
         servicio: "SIELSE ADMINISTRATIVO",
         modulo: "Gestión de Personal",
-        descripcion: "Nuevo ingreso para el área de marketing necesita cuenta corporativa y suite office activada.",
+        descripcion: "corporativa y suite office activada.",
+        fecha: "28/07/2026",
+        archivos: [],
     },
     {
         id: "00010202603",
@@ -53,7 +57,9 @@ export const MOCK_RECORDS: RecordItem[] = [
         ip: "10.1.0.10",
         servicio: "Gos",
         modulo: "Servidor MAP",
-        descripcion: "Se detectan picos inusuales de uso de CPU en el servidor principal de correo de la oficina central.",
+        descripcion: "El celu no prende",
+        fecha: "29/07/2026",
+        archivos: [],
     },
 
 ];
@@ -61,7 +67,7 @@ export const MOCK_RECORDS: RecordItem[] = [
 export const MOCK_RATINGS: RecordRating[] = [
     {
         id: "00010202604",
-        recordId: "TKT-1928",
+        recordId: "1234",
         rating: 5,
         comments: "Excelente atención, la licencia fue aprovisionada en menos de 2 horas. ¡Gracias!",
         recommended: "si",

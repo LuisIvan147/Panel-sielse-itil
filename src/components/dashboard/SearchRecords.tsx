@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { FiSearch, FiCalendar, FiInfo, FiStar, FiMonitor } from "react-icons/fi";
 import { RecordItem, RecordRating } from "@/types/dashboard";
+import { MdDescription } from "react-icons/md";
 
 interface SearchRecordsProps {
     records: RecordItem[];
@@ -31,7 +32,6 @@ export default function SearchRecords({ records, ratings, onUpdateStatus }: Sear
         return matchesSearch && matchesStatus && matchesServicio;
     });
 
-    // Lista única de servicios para el filtro
     const servicios = Array.from(new Set(records.map((r) => r.servicio)));
 
     // ── Helpers de estilo ────────────────────────────────────────────────────
@@ -46,11 +46,9 @@ export default function SearchRecords({ records, ratings, onUpdateStatus }: Sear
         }
     };
 
-    // ── Render ────────────────────────────────────────────────────────────────
     return (
         <div className="w-full space-y-4">
 
-            {/* Encabezado */}
             <div className="border-b border-gray-200 pb-3 flex flex-col sm:flex-row justify-between sm:items-center gap-2">
                 <div>
                     <h2 className="text-xs font-bold text-gray-800 uppercase tracking-wide">Buscar Registro</h2>
@@ -104,14 +102,17 @@ export default function SearchRecords({ records, ratings, onUpdateStatus }: Sear
                     <div className="hidden md:block bg-white rounded border border-gray-200 overflow-hidden">
                         <table className="w-full text-left border-collapse">
                             <thead>
-                                <tr className="bg-gray-50 border-b border-gray-200 text-[9px] font-bold text-gray-500 uppercase tracking-wider">
-                                    <th className="px-4 py-2.5">Ticket / Fecha</th>
-                                    <th className="px-4 py-2.5">Solicitante / IP</th>
-                                    <th className="px-4 py-2.5">Empresa / Sucursal</th>
-                                    <th className="px-4 py-2.5">Servicio / Módulo</th>
-                                    <th className="px-4 py-2.5">Estado</th>
-                                    <th className="px-4 py-2.5">Cal.</th>
-                                    <th className="px-4 py-2.5 text-right">Acción</th>
+                                <tr className="bg-gray-100 border-b border-gray-300 text-[9px] font-bold text-gray-500 uppercase tracking-wider">
+                                    <th className="px-3 py-2.5">Codigo/ Fecha</th>
+                                    <th className="px-3 py-2.5">Estado</th>
+                                    <th className="px-3 py-2.5">Servicio / Módulo</th>
+                                    <th className="px-3 py-2.5">Solicitante / IP</th>
+                                    <th className="px-3 py-2.5">Fecha</th>
+                                    <th className="px-3 py-2.5">Empresa / Sucursal</th>
+                                    <th className="px-3 py-2.5">Descripcion</th>
+                                    <th className="px-3 py-2.5">Cal.</th>
+                                    {/*<th className="px-3 py-2.5 text-right">Acción</th>*/}
+                                    
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-100 text-xs text-gray-600">
@@ -119,11 +120,20 @@ export default function SearchRecords({ records, ratings, onUpdateStatus }: Sear
                                     const ratingInfo = getTicketRating(rec.id);
                                     return (
                                         <tr key={rec.id} className="hover:bg-gray-50/60 transition-colors">
-                                            <td className="px-2 py-3 whitespace-nowrap">
+                                            <td className="px-3 py-3 whitespace-nowrap">
                                                 <div className="font-bold text-blue-600">{rec.id}</div>
                                                 <div className="text-[9px] text-gray-400 flex items-center gap-0.5 mt-0.5">
                                                     <FiCalendar className="w-2.5 h-2.5" /> {rec.createdAt}
                                                 </div>
+                                            </td>
+                                            <td className="px-1 py-3">
+                                                <span className={`px-1 text-[10px] font-bold ${getStatusStyle(rec.status)}`}>
+                                                    {rec.status}
+                                                </span>
+                                            </td>
+                                            <td className="px-2 py-3 max-w-[180px]">
+                                                <div className="text-gray-700 truncate">{rec.servicio}</div>
+                                                <div className="text-[9px] text-gray-400 truncate mt-0.5">{rec.modulo}</div>
                                             </td>
                                             <td className="px-2 py-3">
                                                 <div className="font-semibold text-gray-800">{rec.nombreUsuario}</div>
@@ -131,19 +141,20 @@ export default function SearchRecords({ records, ratings, onUpdateStatus }: Sear
                                                     <FiMonitor className="w-2.5 h-2.5" /> {rec.ip}
                                                 </div>
                                             </td>
+
+                                            <td className="px-2 py3">
+                                                <div className="font-semibold text-gray-700">{rec.fecha}</div>
+                                            </td>
+
                                             <td className="px-2 py-3">
                                                 <div className="text-gray-700">{rec.nombreEmpresa}</div>
                                                 <div className="text-[9px] text-gray-400 mt-0.5">{rec.nombreSucursal} — {rec.nombreArea}</div>
                                             </td>
-                                            <td className="px-2 py-3 max-w-[180px]">
-                                                <div className="text-gray-700 truncate">{rec.servicio}</div>
-                                                <div className="text-[9px] text-gray-400 truncate mt-0.5">{rec.modulo}</div>
-                                            </td>
-                                            <td className="px-2 py-3">
-                                                <span className={`px-1 text-[9px] font-bold ${getStatusStyle(rec.status)}`}>
-                                                    {rec.status}
-                                                </span>
-                                            </td>
+
+                                            <td className="px-2 py-3 max-w-sm">
+                                                <div className="text-gray-600 line-clamp-2">{rec.descripcion}</div>
+                                            </td>    
+
                                             <td className="px-4 py-3">
                                                 {ratingInfo ? (
                                                     <div className="flex items-center gap-1">
@@ -154,7 +165,7 @@ export default function SearchRecords({ records, ratings, onUpdateStatus }: Sear
                                                     <span className="text-[10px] text-gray-300">—</span>
                                                 )}
                                             </td>
-                                            <td className="px-3 py-3 text-right">
+                                            {/*<td className="px-3 py-3 text-right">
                                                 <select
                                                     value={rec.status}
                                                     onChange={(e) => onUpdateStatus(rec.id, e.target.value as RecordItem["status"])}
@@ -165,7 +176,7 @@ export default function SearchRecords({ records, ratings, onUpdateStatus }: Sear
                                                     <option value="Calificado">Calificado</option>
                                                     <option value="Cerrado">Cerrado</option>
                                                 </select>
-                                            </td>
+                                            </td>*/}
                                         </tr>
                                     );
                                 })}
