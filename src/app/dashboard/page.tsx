@@ -24,7 +24,7 @@ export default function DashboardPage() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [currentUser, setCurrentUser] = useState("Luchis");
     const [records, setRecords] = useState<RecordItem[]>(MOCK_RECORDS);
-    const [ratings] = useState<RecordRating[]>(MOCK_RATINGS);
+    const [ratings, setRatings] = useState<RecordRating[]>(MOCK_RATINGS);
     useEffect(() => {
         const stored = localStorage.getItem("user");
         if (!stored) return;
@@ -49,6 +49,16 @@ export default function DashboardPage() {
     const handleUpdateStatus = (id: string, status: RecordItem["status"]) =>
         setRecords((prev) => prev.map((r) => (r.id === id ? { ...r, status } : r)));
 
+    const handleAddRating = (newRating: RecordRating) => {
+        setRatings((prev) => {
+            const exists = prev.some((r) => r.recordId === newRating.recordId);
+            if (exists) {
+                return prev.map((r) => r.recordId === newRating.recordId ? newRating : r);
+            }
+            return [newRating, ...prev];
+        });
+        handleUpdateStatus(newRating.recordId, "Calificado");
+    };
 
     const stats = {
         totalTickets: records.length,
@@ -104,7 +114,12 @@ export default function DashboardPage() {
                     )}
 
                     {view === "calificacion" && (
-                        <RatingForm />
+                        <RatingForm
+                            records={records}
+                            ratings={ratings}
+                            onUpdateStatus={handleUpdateStatus}
+                            onAddRating={handleAddRating}
+                        />
                     )}
 
                 </main>
