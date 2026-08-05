@@ -244,7 +244,7 @@ export default function AddRecordForm({ onAddRecord, onNavigateToSearch }: AddRe
   return (
     <div className="w-full max-w-5xl mx-auto">
 
-      {/* Título */}
+      {/* Título de los titulos  */}
       <div className="flex items-center justify-between mb-5 pb-3 border-b border-gray-200">
         <div>
           <h2 className="text-xs font-bold text-gray-800 uppercase tracking-wide">Registro de Incidente</h2>
@@ -266,7 +266,7 @@ export default function AddRecordForm({ onAddRecord, onNavigateToSearch }: AddRe
 
       <form onSubmit={handleSubmit} className="space-y-6">
 
-        {/* ── Datos del Solicitante ──────────────────────────────── */}
+        {/* ── Datos del Solicitante ────────────────────────────────____ */}
         <section>
           <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest mb-3">Datos del Solicitante</p>
           <div className="grid grid-cols-3 gap-x-4 gap-y-3">
@@ -303,7 +303,13 @@ export default function AddRecordForm({ onAddRecord, onNavigateToSearch }: AddRe
               <Input id="empresa" name="empresa" value={form.empresa} placeholder="1" onChange={handleChange} disabled={isLoading} />
             </Field>
             <Field id="nombreEmpresa" label="Nombre Empresa" error={errors.nombreEmpresa} required>
-              <Input id="nombreEmpresa" name="nombreEmpresa" value={form.nombreEmpresa} placeholder="ELECTRO SUR ESTE S.A.A" onChange={handleChange} disabled={isLoading} />
+              <Input 
+              id="nombreEmpresa" 
+              name="nombreEmpresa"  
+              value={form.nombreEmpresa} 
+              placeholder="ELECTRO SUR ESTE S.A.A" 
+              onChange={handleChange} 
+              disabled={isLoading} />
             </Field>
             <Field id="anexo" label="Anexo">
               <Input id="anexo" name="anexo" value={form.anexo} placeholder="(xd)" onChange={handleChange} disabled={isLoading} />
@@ -369,6 +375,7 @@ export default function AddRecordForm({ onAddRecord, onNavigateToSearch }: AddRe
               name="fecha" 
               type="date"
               value={form.fecha}
+              disabled
               />
             </Field>
             <Field id="descripcion" label="Descripción" error={errors.descripcion} required colSpan="3">
@@ -377,7 +384,6 @@ export default function AddRecordForm({ onAddRecord, onNavigateToSearch }: AddRe
                 onChange={handleChange} disabled={isLoading} maxLength={250} />
             </Field>
 
-            {/* ── Archivos adjuntos ── */}
             <div className="col-span-3 flex flex-col gap-2">
               <label htmlFor="archivos" className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">
                 Archivos adjuntos

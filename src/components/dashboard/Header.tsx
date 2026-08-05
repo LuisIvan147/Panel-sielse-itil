@@ -32,7 +32,6 @@ export default function Header({ view, isMobileMenuOpen, onToggleMobileMenu }: H
                         : <FiMenu className="w-5 h-5" />
                     }
                 </button>
-
                 <h1 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
                     {VIEW_LABELS[view]}
                 </h1>

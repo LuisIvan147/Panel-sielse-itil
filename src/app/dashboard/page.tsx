@@ -38,7 +38,6 @@ export default function DashboardPage() {
         }
     }, []);
 
-    // ── Handlers ─────────────────────────────────────────────────────────────
 
     const handleLogout = () => {
         localStorage.removeItem("user");
