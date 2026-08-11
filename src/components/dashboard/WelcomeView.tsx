@@ -1,23 +1,13 @@
 "use client";
 
 import React from "react";
-import { FiPlusSquare, FiSearch, FiStar, FiActivity, FiAlertCircle, FiClock } from "react-icons/fi";
-
-interface Stats {
-    totalTickets: number;
-    openTickets: number;
-    progressTickets: number;
-    averageRating: string;
-}
 
 interface WelcomeViewProps {
-    currentUser: string;
-    stats: Stats;
     onNavigate: (view: "agregar" | "buscar" | "calificacion") => void;
 }
 
-export default function WelcomeView({ currentUser, stats, onNavigate }: WelcomeViewProps) {
-    const { totalTickets, openTickets, progressTickets, averageRating } = stats;
+export default function WelcomeView({ onNavigate }: WelcomeViewProps) {
+
 
     return (
         <div className="space-y-5">

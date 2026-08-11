@@ -5,17 +5,13 @@ import { useRouter } from "next/navigation";
 import { RecordItem, RecordRating } from "@/types/dashboard";
 import { MOCK_RECORDS, MOCK_RATINGS } from "@/data/mockData";
 
-// Componentes de Layout
 import Sidebar, { type ViewId } from "@/components/dashboard/Sidebar";
 import Header from "@/components/dashboard/Header";
 
-// Vistas
 import WelcomeView from "@/components/dashboard/WelcomeView";
 import AddRecordForm from "@/components/dashboard/AddRecordForm";
 import RatingForm from "@/components/dashboard/RatingForm";
 import SearchRecords from "@/components/dashboard/SearchRecords";
-
-// ─────────────────────────────────────────────────────────────────────────────
 
 export default function DashboardPage() {
     const router = useRouter();
@@ -26,12 +22,12 @@ export default function DashboardPage() {
     const [records, setRecords] = useState<RecordItem[]>(MOCK_RECORDS);
     const [ratings, setRatings] = useState<RecordRating[]>(MOCK_RATINGS);
     useEffect(() => {
-        const stored = localStorage.getItem("user");
+        const stored  = localStorage.getItem("user");
         if (!stored) return;
         try {
             const parsed = JSON.parse(stored);
             if (parsed?.username) {
-                setTimeout(() => setCurrentUser(parsed.username), 0);
+                setCurrentUser(parsed.username);
             }
         } catch {
             // si el JSON está corrupto, ignoramos y usamos el valor por defecto
@@ -59,15 +55,6 @@ export default function DashboardPage() {
         handleUpdateStatus(newRating.recordId, "Calificado");
     };
 
-    const stats = {
-        totalTickets: records.length,
-        openTickets: records.filter((r) => r.status === "Registrado").length,
-        progressTickets: records.filter((r) => r.status === "Revisión").length,
-        averageRating: ratings.length > 0
-            ? (ratings.reduce((acc, r) => acc + r.rating, 0) / ratings.length).toFixed(1)
-            : "N/A",
-    };
-
     return (
         <div className="flex min-h-screen bg-gray-50 text-gray-700 font-sans">
 
@@ -90,11 +77,7 @@ export default function DashboardPage() {
                 <main className="flex-1 p-2 md:p-6 max-w-7xl w-full mx-auto">
 
                     {view === "inicio" && (
-                        <WelcomeView
-                            currentUser={currentUser}
-                            stats={stats}
-                            onNavigate={(v) => setView(v)}
-                        />
+                        <WelcomeView onNavigate={(v) => setView(v)} />
                     )}
 
                     {view === "agregar" && (

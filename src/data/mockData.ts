@@ -46,7 +46,7 @@ export const MOCK_RECORDS: RecordItem[] = [
         status: "Registrado",
         createdAt: "29/07/2026 21:10",
         usuario: "soporte1",
-        nombreUsuario: "Soporte Nivel 1",
+        nombreUsuario: "Tu suport",
         empresa: "1",
         nombreEmpresa: "ELECTRO SUR ESTE S.A.A",
         sucursal: "1",

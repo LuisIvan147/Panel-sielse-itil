@@ -57,7 +57,7 @@ export default function RatingForm({ records, ratings, onUpdateStatus, onAddRati
     setSelectedRecordId(id);
     const rating = ratings.find((r) => r.recordId === id);
     setComments(rating?.comments ?? "");
-    // En móvil, cambiar a vista de detalle
+
     if (isMobile) setShowMobileDetail(true);
   };
 
@@ -187,7 +187,7 @@ export default function RatingForm({ records, ratings, onUpdateStatus, onAddRati
 
   return (
     <div className="w-full h-full flex flex-col">
-      {/* Cabecera siempre visible */}
+
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-3">
         <div>
           <h2 className="text-sm font-semibold text-gray-800">Gestión de Tickets de Soporte</h2>
@@ -222,9 +222,7 @@ export default function RatingForm({ records, ratings, onUpdateStatus, onAddRati
         </div>
       </div>
 
-      {/* Contenedor principal con adaptación móvil / escritorio */}
       <div className="flex-1 border border-gray-300 rounded-sm bg-white overflow-hidden">
-        {/* Vista escritorio (lg hacia arriba): grid de dos columnas */}
         <div className="hidden lg:grid lg:grid-cols-5 h-full">
           {/* Lista de tickets */}
           <div className="col-span-2 border-r border-gray-200 flex flex-col h-full">
@@ -275,13 +273,11 @@ export default function RatingForm({ records, ratings, onUpdateStatus, onAddRati
             </div>
           </div>
 
-          {/* Detalle (escritorio) */}
           <div className="col-span-3 p-4 bg-gray-50/30 overflow-y-auto">
             {detailPanel}
           </div>
         </div>
 
-        {/* Vista móvil (< lg): alternancia entre lista y detalle */}
         <div className="lg:hidden h-full relative">
           {!showMobileDetail ? (
 
@@ -328,7 +324,7 @@ export default function RatingForm({ records, ratings, onUpdateStatus, onAddRati
               </div>
             </div>
           ) : (
-            /* Pantalla de detalle en móvil */
+            
             <div className="flex flex-col h-full">
               <div className="flex items-center gap-2 px-4 py-2 bg-gray-50 border-b border-gray-200">
                 <button
