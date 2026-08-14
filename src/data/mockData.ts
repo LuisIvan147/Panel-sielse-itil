@@ -19,7 +19,11 @@ export const MOCK_RECORDS: RecordItem[] = [
         modulo: "ATENCION CLIENTELA - Administrador de Clientes",
         descripcion: "conexiones está saturado. Se registran timeouts cada 5 minutos al intentar acceder al módulo de facturación.",
         fecha: "29/07/2026",
-        archivos: [],
+        archivos: [
+            { nombre: "caso1.png", tamano: 46944, tipo: "image/png", url: "/casos/caso1.png" },
+            { nombre: "caso2.png", tamano: 46944, tipo: "image/png", url: "/casos/caso2.png" },
+            
+        ],
     },
     {
         id: "00010202602",
@@ -39,7 +43,10 @@ export const MOCK_RECORDS: RecordItem[] = [
         modulo: "Gestión de Personal",
         descripcion: "corporativa y suite office activada.",
         fecha: "28/07/2026",
-        archivos: [],
+        archivos: [
+            { nombre: "caso3.png", tamano: 46944, tipo: "image/png", url: "/casos/caso3.png" },
+            { nombre: "caso4.png", tamano: 46944, tipo: "image/png", url: "/casos/caso4.png" },
+        ],
     },
     {
         id: "00010202603",
@@ -59,7 +66,10 @@ export const MOCK_RECORDS: RecordItem[] = [
         modulo: "Servidor MAP",
         descripcion: "El celu no prende",
         fecha: "29/07/2026",
-        archivos: [],
+        archivos: [
+            { nombre: "caso5.png", tamano: 46944, tipo: "image/png", url: "/casos/caso5.png" }, 
+            { nombre: "caso6.png", tamano: 46944, tipo: "image/png", url: "/casos/caso6.png" },
+        ],
     },
 
 ];
@@ -74,3 +84,10 @@ export const MOCK_RATINGS: RecordRating[] = [
         createdAt: "28/07/2026 16:30",
     },
 ];
+
+{/*export const EXISTING_CASOS: RecordRating[(prev.archivos.length + i ) % 6]
+    {
+        nombre: ""
+
+    }
+*/}

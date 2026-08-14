@@ -110,7 +110,7 @@ export default function SearchRecords({ records, ratings, onUpdateStatus }: Sear
                                     <th className="px-3 py-2.5">Fecha</th>
                                     <th className="px-3 py-2.5">Empresa / Sucursal</th>
                                     <th className="px-3 py-2.5">Descripcion</th>
-                                    <th className="px-3 py-2.5">Cal.</th>
+                                    <th className="px-3 py-2.5">Archivos</th>
                                     {/*<th className="px-3 py-2.5 text-right">Acción</th>*/}
                                     
                                 </tr>
@@ -153,18 +153,28 @@ export default function SearchRecords({ records, ratings, onUpdateStatus }: Sear
 
                                             <td className="px-2 py-3 max-w-sm">
                                                 <div className="text-gray-600 line-clamp-2">{rec.descripcion}</div>
-                                            </td>    
+                                            </td>  
 
-                                            <td className="px-4 py-3">
-                                                {ratingInfo ? (
-                                                    <div className="flex items-center gap-1">
-                                                        <FiStar className="fill-amber-400 text-amber-400 w-3 h-3" />
-                                                        <span className="font-bold text-gray-700 text-[10px]">{ratingInfo.rating}</span>
+                                             
+                                            
+                                                <td className="px-3 py-3">
+                                                {rec.archivos.length > 0 ? (
+                                                    <div className="flex gap-1.5">
+                                                    {rec.archivos.map((a) => (
+                                                        <a key={a.url} href={a.url} target="_blank" rel="noreferrer" title={a.nombre}>
+                                                        <img
+                                                            src={a.url}
+                                                            alt={a.nombre}
+                                                            className="w-9 h-9 object-cover rounded border border-gray-200 hover:opacity-80 transition-opacity"
+                                                        />
+                                                        </a>
+                                                    ))}
                                                     </div>
                                                 ) : (
                                                     <span className="text-[10px] text-gray-300">—</span>
                                                 )}
-                                            </td>
+                                                </td>
+
                                             {/*<td className="px-3 py-3 text-right">
                                                 <select
                                                     value={rec.status}

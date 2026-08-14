@@ -23,6 +23,7 @@ export default function RatingForm({ records, ratings, onUpdateStatus, onAddRati
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("Todos");
   const [comments, setComments] = useState("");
+  const [imagenSeleccionada, setImagenSeleccionada] = useState<string | null>(null);
 
   // Control de vista en móvil: true = mostrando detalle, false = mostrando lista
   const [showMobileDetail, setShowMobileDetail] = useState(false);
@@ -131,6 +132,31 @@ export default function RatingForm({ records, ratings, onUpdateStatus, onAddRati
         <div className="mt-1 p-3 bg-white border border-gray-200 rounded-sm text-xs text-gray-700 whitespace-pre-wrap leading-relaxed">
           {selectedRecord.descripcion}
         </div>
+      </div>
+
+      <div>
+        <span className="text-[10px] font-semibold text-gray-500 uppercase">Archivos Adjuntos</span>
+        {selectedRecord.archivos.length} 
+        <div className="mt-1 flex flex-wrap gap-2">
+          {selectedRecord.archivos.map((file, index) => (
+            <img 
+            src={file.url} 
+            alt={file.nombre} 
+            key={index} 
+            onClick={()=> setImagenSeleccionada(file.url)}
+            className="w-60 h-70 object-cover rounded" 
+            />
+          ))}
+        </div>
+        {imagenSeleccionada && (
+          <div className="mt-3">
+            <img 
+              src={imagenSeleccionada} 
+              alt="Imagen Seleccionada" 
+              className="w-full h-full object-contain rounded" 
+            />
+          </div>
+        )}
       </div>
 
       <div className="border-t border-gray-200 pt-3">

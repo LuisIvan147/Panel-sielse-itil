@@ -1,0 +1,31 @@
+---Tabla de registro---
+--
+-Código
+-Tiempo respuesta
+-Tiempo calificacion
+-Estado
+-Servicio
+-Usuario Solicita
+--
+-Nombre Usuario
+-Fecha Solicitud
+-Descripcion
+-Fecha asignacion calificaión
+-Fecha estimado respuesta
+-Calificación
+-Analista califica
+-Nombre analista califica
+-Fecha calificacón
+-Fecha primera respuesta
+-Analista primera respuesta
+-Nombre analista primera respuesta
+-Fecha respuesta solucion
+-Analista respuesta solucion
+-Fecha respuesta usuario
+-Nombre analista respuesta solucion
+-Usuario crea
+-Usuario modifica
+-Fecha cracion
+-fecha modificaión 
+-Empresa 
+-Sucursal

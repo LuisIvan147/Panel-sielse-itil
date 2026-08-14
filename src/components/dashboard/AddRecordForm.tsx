@@ -31,6 +31,15 @@ const INITIAL_FORM = {
   archivos: [] as ArchivoAdjunto[],
 };
 
+const EXISTING_CASOS = [
+  "casos/caso1.png",
+  "casos/caso2.png",
+  "casos/caso3.png",
+  "casos/caso4.png",
+  "casos/caso5.png",
+  "casos/caso6.png",
+]
+
 type FormState = typeof INITIAL_FORM;
 type TextFieldKey = Exclude<keyof FormState, "archivos">;
 type FormErrors = Partial<Record<TextFieldKey, string>>;
@@ -180,14 +189,19 @@ export default function AddRecordForm({ onAddRecord, onNavigateToSearch }: AddRe
     if (errors[field]) setErrors((prev) => ({ ...prev, [field]: "" }));
   };
 
-  const handleAddFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
+const handleAddFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files ?? []);
     if (files.length === 0) return;
     setForm((prev) => ({
       ...prev,
       archivos: [
         ...prev.archivos,
-        ...files.map((f) => ({ nombre: f.name, tamano: f.size, tipo: f.type })),
+        ...files.map((f, i) => ({
+          nombre: f.name,
+          tamano: f.size,
+          tipo: f.type,
+          url: EXISTING_CASOS[(prev.archivos.length + i) % EXISTING_CASOS.length],
+        })),
       ],
     }));
     e.target.value = "";
@@ -396,7 +410,7 @@ export default function AddRecordForm({ onAddRecord, onNavigateToSearch }: AddRe
               >
                 <FiUpload className="w-4 h-4 text-gray-400" />
                 <span className="text-xs text-gray-500">
-                  Haz clic para seleccionar archivos (opcional)
+                  ...
                 </span>
               </label>
               <input
@@ -411,6 +425,7 @@ export default function AddRecordForm({ onAddRecord, onNavigateToSearch }: AddRe
                 <ul className="flex flex-col gap-1.5">
                   {form.archivos.map((file) => (
                     <li key={file.nombre} className="flex items-center gap-2 px-2.5 py-1.5 rounded border border-gray-200 bg-white text-xs">
+                      <img src={file.url} alt={file.nombre} className="w-8 h-8 object-cover rounded" />
                       <FiFile className="w-3.5 h-3.5 text-blue-500 shrink-0" />
                       <span className="text-gray-700 truncate flex-1">{file.nombre}</span>
                       <span className="text-[9px] text-gray-400 shrink-0">{formatSize(file.tamano)}</span>

@@ -2,6 +2,7 @@ export interface ArchivoAdjunto {
     nombre: string;   // Nombre del archivo
     tamano: number;   // Tamaño en bytes
     tipo: string;     // MIME type (ej. application/pdf)
+    url: string;      // Ruta servida del archivo (ej. /casos/caso1.png)
 }
 
 export interface RecordItem {
@@ -27,7 +28,7 @@ export interface RecordItem {
     modulo:         string;  // Módulo del sistema (ej. ATENCION CLIENTELA)
     descripcion:    string;  // Descripción detallada del incidente / solicitud
     fecha:          string;  // Fecha del incidente (formato DD/MM/AAAA)
-    archivos:       ArchivoAdjunto[];  // Archivos adjuntos al ticket
+    archivos:       ArchivoAdjunto[];  // Archivos adjuntos al ticket  
 }
 
 export interface RecordRating {
