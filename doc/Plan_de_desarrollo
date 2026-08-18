@@ -109,7 +109,7 @@ Toda la comunicación se realizará mediante un servicio de autenticación.
 
 Campos:
 
-* Correo electrónico (o Usuario corporativo según los requerimientos finales).
+* Solo nombre de usario (o Usuario corporativo según los requerimientos finales).
 * Contraseña.
 
 Características:
@@ -125,7 +125,7 @@ Características:
 
 # Validaciones del Frontend
 
-Correo electrónico:
+Usuario:
 
 * Obligatorio.
 * Formato válido.

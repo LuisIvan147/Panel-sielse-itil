@@ -286,7 +286,7 @@ const handleAddFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
           <div className="grid grid-cols-3 gap-x-4 gap-y-3">
             <Field 
             id="usuario" 
-            label="sielsedoc" 
+            label="Usuario" 
             error={errors.usuario} 
             required
             >
